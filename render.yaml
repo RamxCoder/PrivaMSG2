@@ -1,0 +1,18 @@
+# Render Deployment Blueprint Configuration File
+# This file is automatically read by Render (https://render.com) to configure your service.
+services:
+  - type: web
+    name: privamsg-service
+    runtime: node
+    plan: free # Can be updated to starter/pro on Render if desired
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: DB_ENCRYPTION_KEY
+        sync: false
